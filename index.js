@@ -82,22 +82,17 @@ const run = async () => {
 
 
         app.get('/myFruits', async (req, res) => {
-            // const decodedEmail = req?.decoded?.email;
+            const decodedEmail = req?.decoded?.email;
             const email = req?.query?.email;
             const query = { userEmail: email };
-            
             const cursor = fruitCollection.find(query);
             const fruits = await cursor.toArray();
             res.send(fruits);
             console.log(fruits);
 
             
-            // if (email === decodedEmail) {
-                
-            // }
-            // else {
-            //     res.status(403).send({ message: 'Forbidden access' })
-            // }
+            
+            
         })
 
         app.get('/fruits', async (req, res) => {
