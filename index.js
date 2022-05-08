@@ -81,7 +81,7 @@ const run = async () => {
         })
 
 
-        app.get('/myFruits', async (req, res) => {
+        app.get('/myFruits', verifyJWT, async (req, res) => {
             const decodedEmail = req?.decoded?.email;
             const email = req?.query?.email;
             const query = { userEmail: email };
@@ -89,9 +89,7 @@ const run = async () => {
             const fruits = await cursor.toArray();
             res.send(fruits);
             console.log(fruits);
-
-            
-            
+  
             
         })
 
@@ -128,5 +126,5 @@ app.get('/', (req, res) => {
 });
 
 app.listen(port, () => {
-    console.log('Backend server running in port', port);
+    console.log('Backend server running port', port);
 })
