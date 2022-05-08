@@ -91,8 +91,12 @@ const run = async () => {
             res.send(fruits);
 
             }
+
+            else {
+                res.status(403).send({ message: 'Forbidden access' })
+            }
             
-            console.log(fruits);
+            
   
             
         })
