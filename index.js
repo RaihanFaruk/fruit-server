@@ -84,11 +84,14 @@ const run = async () => {
         app.get('/myFruits', verifyJWT, async (req, res) => {
             const decodedEmail = req?.decoded?.email;
             const email = req?.query?.email;
-            
+            if (email === decodedEmail){
             const query = { userEmail: email };
             const cursor = fruitCollection.find(query);
             const fruits = await cursor.toArray();
             res.send(fruits);
+
+            }
+            
             console.log(fruits);
   
             
